@@ -1,0 +1,182 @@
+/*.................... Шрифты....................*/
+@font-face {
+    font-family: "NunitoSans";
+    src: url(../fonts/NunitoSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "NunitoSans-Italic";
+    src: url(../fonts/NunitoSans-Italic.ttf);
+}
+
+@font-face {
+    font-family: "YesevaOne";
+    src: url(../fonts/YesevaOne-Regular.ttf);
+}
+
+/*....................Основное....................*/
+body {
+    /* max-width: 1440px; */
+    font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/*....................Section Completed_projects....................*/
+
+.completed_projects {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+.completed_projects_content {
+    max-width: 1300px;
+    padding-top: 107px;
+    padding-right: 43px;
+    padding-bottom: 403px;
+    padding-left: 42px;
+}
+
+.navigation_completed_nav {
+    margin-top: 0;
+    padding-left: 0;
+    margin-right: 56px;
+    margin-left: 550px;
+    margin-bottom: 45.36px;
+    width: 623px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.completed-nav__item-li{
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+
+}
+.completed-nav__item-li:hover, .completed-nav__item-li.active{
+  cursor: pointer;
+    color: #E3B873;
+    text-decoration:underline;
+}
+.completed_main_ifo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.compleaded_text_main {
+    display: flex;
+    flex-direction: column;
+}
+
+.completed_text_title {
+    font-size: 27px;
+    line-height: 37px;
+    color: rgba(227, 184, 115, 1);
+}
+
+.completed_text_p {
+    font-family: NunitoSans;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1);
+    height: 86px;
+    max-width: 440px;
+    letter-spacing: 0em;
+}
+
+.completed_text_block {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.completedproj_img {
+    margin-top: -150px;
+     width: 679px;
+    height: 482px;
+  }
+  
+  .completedproj_img .image {
+    width: 679px;
+    height: 482px;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    position: absolute;
+    background-repeat: no-repeat;
+  }
+  
+  .completedproj_img .image.active {
+    opacity: 1;
+  }
+
+
+.completed_text_block h3 {
+    font-family: YesevaOne;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(227, 184, 115, 1);
+    text-transform: uppercase
+}
+
+.completed_text_block span {
+    font-family: NunitoSans;
+    font-size: 13px;
+    line-height: 21.28px;
+    line-height: 120%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.completed_text_block_arrows {
+    margin-top: 120px;
+    display: flex;
+  
+    }
+.slider_arrow{
+    display: flex;
+    justify-content: space-between;
+    width: 125px;
+   cursor: pointer;
+
+}
+.slider_dots {
+    display: flex;
+width: 155px;
+  
+}
+
+.slider_dots-item {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 9px;
+    margin-right: 9px;
+   transition: background 0.4s ease;
+}
+
+.slider_dots-item:hover, .slider_dots-item.active {
+  background: #ccc;
+}
