@@ -1,18 +1,18 @@
 let images = [{
   sliderCity: "Rostov-on-Don, Admiral",
-  url: "https://i121.fastpic.org/big/2023/0222/b5/f7e7bbbe5dcf56c5922ab9e966a77fb5.jpg",
+  url: "./images/image2.1.jpg",
   city: "Rostov-on-Don, Admiral",
   area: "81 m2",
   time: "3.5 months"
 }, {
   sliderCity: "Sochi Thieves",
-  url: "https://i121.fastpic.org/big/2023/0222/a7/a426927dc1a15b9e56b3938c0a6f39a7.jpg",
+  url: "./images/image2.jpg",
   city: "Sochi Thieves",
   area: "105 m2",
   time: "4 months"
 }, {
   sliderCity: "Rostov-on-Don Patriotic",
-  url: "https://i121.fastpic.org/big/2023/0222/e2/fbd2117e519aa12feffd3c75aea994e2.jpg",
+  url: "./images/image3.jpg",
   city: "Rostov-on-Don Patriotic",
   area: "93 m2",
   time: "3 months"
