@@ -1,104 +1,164 @@
 let images = [{
-    url: "https://i121.fastpic.org/big/2023/0222/b5/f7e7bbbe5dcf56c5922ab9e966a77fb5.jpg",
-    sliderCity: "Rostov-on-Don, Admiral"
-  }, {
-    url: "https://i121.fastpic.org/big/2023/0222/a7/a426927dc1a15b9e56b3938c0a6f39a7.jpg",
-    sliderCity: "Sochi Thieves"
-  }, {
-    url: "https://i121.fastpic.org/big/2023/0222/e2/fbd2117e519aa12feffd3c75aea994e2.jpg",
-    sliderCity:"Rostov-on-Don Patriotic"
+  sliderCity: "Rostov-on-Don, Admiral",
+  url: "https://i121.fastpic.org/big/2023/0222/b5/f7e7bbbe5dcf56c5922ab9e966a77fb5.jpg",
+  city: "Rostov-on-Don, Admiral",
+  area: "81 m2",
+  time: "3.5 months"
+}, {
+  sliderCity: "Sochi Thieves",
+  url: "https://i121.fastpic.org/big/2023/0222/a7/a426927dc1a15b9e56b3938c0a6f39a7.jpg",
+  city: "Sochi Thieves",
+  area: "105 m2",
+  time: "4 months"
+}, {
+  sliderCity: "Rostov-on-Don Patriotic",
+  url: "https://i121.fastpic.org/big/2023/0222/e2/fbd2117e519aa12feffd3c75aea994e2.jpg",
+  city: "Rostov-on-Don Patriotic",
+  area: "93 m2",
+  time: "3 months"
 }];
 
 function initSlider(images, options) {
-    if (!images || !images.length) return;
+  if (!images || !images.length) return;
 
-    options = options || {
-        dots: false
-    }
-    
-    const sliderWrapper = document.querySelector(".completed_projects");
-    const sliderImages = sliderWrapper.querySelector(".completedproj_img");
-    const sliderArrows = document.querySelector(".completed_text_block_arrows");
-     const sliderDots = document.querySelector(".slider_dots");
-    const sliderCity =  document.querySelector(".navigation_completed_nav");
-    
-    initImages();
-    initArrows();
-   
-    if (options.dots) {
-      initDots();
-    }
-    if (options.links) {
-    initLinks();
+  options = options || {
+    dots: false
   }
 
-  
-    
-    function initImages() {
-      images.forEach((image, index) => {
-        let imageElement = document.createElement("div");
-        imageElement.classList = `image n${index} ${index? "" : "active"}`;
-        imageElement.dataset.index = index;
-        imageElement.style.backgroundImage = `url(${image.url})`;
-        sliderImages.appendChild(imageElement);
-      });
-    }
-    function initArrows(){
-     let lastIndex = images.length - 1; sliderArrows.querySelectorAll(".slider_arrow").forEach(arrow =>{
-        arrow.addEventListener("click", function() {
-          let curNumber = +sliderImages.querySelector(".active").dataset.index;
-          let nextNumber;
-          if(arrow.classList.contains("left")){
-            nextNumber = curNumber ===0? images.length -1 : curNumber -1;
-          } else {
-            nextNumber = curNumber ===images.length -1? 0 : curNumber +1;
-          }
-          moveSlider(nextNumber);
-        });
-      });
-     }
-    function moveSlider(num){
-      sliderImages.querySelector(".active").classList.remove("active");
-      sliderImages.querySelector(`.n${num}`).classList.add("active");
+  const sliderWrapper = document.querySelector(".completed_projects");
+  const sliderImages = sliderWrapper.querySelector(".completedproj_img");
+  const sliderCity = document.querySelector(".navigation_completed_nav");
+  const sliderArrows = document.querySelector(".completed_text_block_arrows");
+  const sliderDots = document.querySelector(".slider_dots");
+  const city = sliderWrapper.querySelector(".city");
+  const area = sliderWrapper.querySelector(".areas");
+  const time = sliderWrapper.querySelector(".repair_time");
 
-      sliderDots.querySelector(".active").classList.remove("active");
-      sliderDots.querySelector(".n" + num).classList.add("active");
-      
-      sliderCity.querySelector(".active").classList.remove("active");
-      sliderCity.querySelector(".n" + num).classList.add("active");
-    }
+  initImages();
+  initLinks();
+  initArrows();
+  initDots()
+  initCity();
+  initArea();
+  initTime();
 
-      function initDots() {
-        images.forEach((image, index) => {
-          let dot = `<div class="slider_dots-item n${index} ${index === 0? "active" : ""}" 
+
+
+  if (options.links) {
+    initLinks();
+  }
+  if (options.autoplay) {
+    initAutoplay();
+  }
+
+
+
+  function initImages() {
+    images.forEach((image, index) => {
+      let imageElement = document.createElement("div");
+      imageElement.classList = `image n${index} ${index ? "" : "active"}`;
+      imageElement.dataset.index = index;
+      imageElement.style.backgroundImage = `url(${image.url})`;
+      sliderImages.appendChild(imageElement);
+    });
+  }
+  function initArrows() {
+    let lastIndex = images.length - 1; sliderArrows.querySelectorAll(".slider_arrow").forEach(arrow => {
+      arrow.addEventListener("click", function () {
+        let curNumber = +sliderImages.querySelector(".active").dataset.index;
+        let nextNumber;
+        if (arrow.classList.contains("left")) {
+          nextNumber = curNumber === 0 ? images.length - 1 : curNumber - 1;
+        } else {
+          nextNumber = curNumber === images.length - 1 ? 0 : curNumber + 1;
+        }
+        moveSlider(nextNumber);
+      });
+    });
+  }
+
+
+  function initDots() {
+    images.forEach((image, index) => {
+      let dot = `<div class="slider_dots-item n${index} ${index === 0 ? "active" : ""}" 
           data-index="${index}"></div>`;
-          sliderDots.innerHTML += dot;
-        });
-          sliderDots.querySelectorAll(".slider_dots-item").forEach(dot => {
-            dot.addEventListener("click", function() {
-            moveSlider(this.dataset.index);
-          });
-        });
-      }
-      function initLinks() {
-  images.forEach((image, index) => {
-    let link = `<a class ="completed-nav__item-li n${index} ${index === 0? "active" : ""}" data-index="${index}">${images[index].sliderCity}</a>`;
-    sliderCity.innerHTML += link;
-});
-  sliderCity.querySelectorAll(".completed-nav__item-li").forEach(link => {
-    link.addEventListener("click", function() {
-      moveSlider(this.dataset.index);
+      sliderDots.innerHTML += dot;
+    });
+    sliderDots.querySelectorAll(".slider_dots-item").forEach(dot => {
+      dot.addEventListener("click", function () {
+        moveSlider(this.dataset.index);
+      });
+    });
+  }
+  function initLinks() {
+    images.forEach((image, index) => {
+      let link = `<a class ="completed-nav__item-li n${index} ${index === 0 ? "active" : ""}" data-index="${index}">${images[index].sliderCity}</a>`;
+      sliderCity.innerHTML += link;
+    });
+    sliderCity.querySelectorAll(".completed-nav__item-li").forEach(link => {
+      link.addEventListener("click", function () {
+        moveSlider(this.dataset.index);
+      })
     })
-  })   
+  }
+  function initCity() {
+    let citySpan = `<span class="completed_text_block city">${images[0].city}</span>`;
+    city.innerHTML += citySpan;
+  }
+  function changeCity(num) {
+    if (!images[num].city) return;
+    let sliderCity = city.querySelector(".city");
+    sliderCity.innerHTML = images[num].city;
+  }
+  function initArea() {
+    let areaSpan = `<span class="completed_text_block areas">${images[0].area}</span>`;
+    area.innerHTML += areaSpan;
+  }
+  function changeArea(num) {
+    if (!images[num].area) return;
+    let sliderArea = area.querySelector(".areas");
+    sliderArea.innerText = images[num].area;
+  }
+  function initTime() {
+    let timeSpan = `<span class="completed_text_block repair_time">${images[0].time}</span>`;
+    time.innerHTML += timeSpan;
+  }
+  function changeTime(num) {
+    if (!images[num].time) return;
+    let sliderTime = time.querySelector(".repair_time");
+    sliderTime.innerText = images[num].time;
+  }
+
+  function initAutoplay() {
+    setInterval(() => {
+      let curNumber = +sliderImages.querySelector(".active").dataset.index;
+      let nextNumber = curNumber === images.length - 1? 0 : curNumber + 1;
+      moveSlider(nextNumber);
+    }, options.autoplayInterval);
+  }
+
+  function moveSlider(num) {
+    sliderImages.querySelector(".active").classList.remove("active");
+    sliderImages.querySelector(`.n${num}`).classList.add("active");
+
+    sliderDots.querySelector(".active").classList.remove("active");
+    sliderDots.querySelector(".n" + num).classList.add("active");
+
+    sliderCity.querySelector(".active").classList.remove("active");
+    sliderCity.querySelector(".n" + num).classList.add("active");
+
+    changeArea(num);
+    changeCity(num);
+    changeTime(num);
+  }
 }
-      
-    }
-  
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    let sliderOptions = {
-        dots: true,
-        links: true
-    }
-    initSlider(images, sliderOptions);
-  });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  let sliderOptions = {
+    dots: true,
+    autoplay: true,
+   autoplayInterval: 3000
+  }
+  initSlider(images, sliderOptions);
+});

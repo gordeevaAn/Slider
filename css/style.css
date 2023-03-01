@@ -58,7 +58,6 @@ body * {
     padding-left: 0;
     margin-right: 56px;
     margin-left: 550px;
-    margin-bottom: 45.36px;
     width: 623px;
     display: flex;
     justify-content: space-evenly;
@@ -110,7 +109,7 @@ body * {
 }
 
 .completedproj_img {
-    margin-top: -150px;
+    margin-top: -140px;
      width: 679px;
     height: 482px;
   }
@@ -149,7 +148,7 @@ body * {
 }
 
 .completed_text_block_arrows {
-    margin-top: 120px;
+    margin-top: 70px;
     display: flex;
   
     }
