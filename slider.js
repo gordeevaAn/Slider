@@ -1,19 +1,19 @@
 let images = [{
   sliderCity: "Rostov-on-Don, Admiral",
   url: "./images/image2.1.jpg",
-  city: "Rostov-on-Don, Admiral",
+  city: "Rostov-on-Don Admiral",
   area: "81 m2",
   time: "3.5 months"
 }, {
   sliderCity: "Sochi Thieves",
   url: "./images/image2.jpg",
-  city: "Sochi Thieves",
+  city: "Sochi <br> Thieves",
   area: "105 m2",
   time: "4 months"
 }, {
   sliderCity: "Rostov-on-Don Patriotic",
   url: "./images/image3.jpg",
-  city: "Rostov-on-Don Patriotic",
+  city: "Rostov-on-Don, Patriotic",
   area: "93 m2",
   time: "3 months"
 }];
